@@ -4,28 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AIDI Car Detailing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
-    
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #3b3b3b;
-      
+      background: url('https://t4.ftcdn.net/jpg/07/02/86/49/360_F_702864903_5BT4BZwjogEXjAhWeN4Z8GAGsh6lDXxd.jpg') no-repeat center center fixed;
+      background-size: cover;
+      padding-top: 60px; /* Hapësirë për navbar-in fiks */
     }
 
     header {
-      background-color: #2f456d;
+      background-color: #0f0f0f;
+      background-image: url('https://t3.ftcdn.net/jpg/04/39/74/86/360_F_439748625_4wIlKRyXMdG5EbD9dOv1nzKChiwz2glx.jpg');
+      background-repeat: no-repeat;
+      background-position: right;
+      background-size: 500px auto;
       color: white;
-      padding: 20px 40px;
+      padding: 40px;
       text-align: center;
+    }
+
+    .header-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.8em;
+      font-weight: 700;
+      color: #f4f4f4;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      letter-spacing: 4px;
     }
 
     nav {
       background: #333;
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 20px;
       padding: 10px;
+      position: fixed; /* Navbar e fiksuar */
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000; /* Siguron që navbar është mbi çdo gjë tjetër */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     nav a {
@@ -38,12 +60,15 @@
       text-decoration: underline;
     }
 
-    .hero {
-      padding: 60px;
-      text-align: center;
-      background: url('https://source.unsplash.com/1600x600/?nature') no-repeat center center;
-      background-size: cover;
-      color: white;
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: -1;
     }
 
     .content {
@@ -54,6 +79,69 @@
       box-shadow: 0 0 10px rgba(156, 155, 155, 0.1);
     }
 
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .services-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease-out;
+      background-color: #444;
+      color: white;
+      padding: 0 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+    }
+
+    .services-container.open {
+      max-height: 500px;
+      padding: 20px;
+    }
+
+    .services-container ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .services-container li {
+      padding: 10px 0;
+      border-bottom: 1px solid #666;
+    }
+
+    .about-container {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease-out;
+      background-color: #4a4a4a;
+      color: white;
+      padding: 0 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 90%;
+    }
+
+    .about-container.open {
+      max-height: 300px;
+      padding: 20px;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -61,148 +149,219 @@
       color: white;
       margin-top: 40px;
     }
+
+    #contact-section {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #f7f7f7;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #45a049;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      margin: 20px auto;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .map-container {
+      margin: 20px auto;
+      width: 80%;
+      height: 450px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 <body>
-    
-    
+
   <header>
-    <h1>AIDI Car Detailing</h1>
-    <p>Aid Hasani</p>
+    <h1 class="header-title">AIDI Car Detailing</h1>
   </header>
 
   <nav>
     <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact
-    </a>
+    <a href="#about-section">About</a>
+    <a href="#services-list">Services</a>
+    <a href="#contact-section" id="contact-link">Contact</a>
   </nav>
 
   <section class="hero">
     <h2></h2>
-    <p><style>
-        a:link, a:visited {
-          background-color: #c4c4c4;
-          color: white;
-          padding: 15px 25px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-        }
-        
-        a:hover, a:active {
-          background-color: red;
-        }
-        </style><a href="https://www.youtube.com/watch?v=XevlJ4rEd3Y&ab_channel=VermijlCarDetail">Youtube</a></p>
+  </section>
+
+  <section class="services-container" id="services-list">
+    <ul>
+      <li>1. Larje nga jashtë (10 euro)</li>
+      <li>2. Pastrim interiori (10 euro)</li>
+      <li>3. Pastrim i thellë (50 euro)</li>
+      <li>4. Polirim i dritave (20 euro)</li>
+    </ul>
+  </section>
+
+  <section class="about-container" id="about-section">
+    <p>
+      AIDI Car Detailing është një kompani profesionale e pastrimit dhe mirëmbajtjes së automjeteve, e themeluar nga Aid Hasani.
+      Ne ofrojmë një gamë të gjerë shërbimesh duke filluar nga larja e jashtme, pastrimi i brendshëm, deri te pastrimi i thellë dhe polirimi i dritave.
+      Me fokus në cilësi dhe përkushtim maksimal, ne sigurojmë që çdo makinë të dalë nga ne më e pastër, më e shndritshme dhe më e mbrojtur.
+    </p>
   </section>
 
   <section class="content">
-    <h2><img src="c:\Users\aidha\Downloads\Interior-plus-1-min-1024x683.jpg" alt="Interior"></h2>
-    <p>
-      
-    </p>
+    <div class="video-container">
+      <iframe width="100%" height="500" src="https://www.youtube.com/embed/XevlJ4rEd3Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="gallery">
+      <img src="https://www.cardetailing.rs/images/gallery/bmw-enterijer.jpg" alt="BMW Enterier">
+      <img src="https://www.cardetailing.rs/images/gallery/detailing.jpg" alt="Detailing">
+      <img src="https://www.cardetailing.rs/images/gallery/bmw-spolja.jpg" alt="BMW Spolja">
+      <img src="https://www.cardetailing.rs/images/gallery/5.jpg" alt="5">
+      <img src="https://www.cardetailing.rs/images/gallery/brabus-spolja.jpg" alt="Brabus Spolja">
+      <img src="https://www.cardetailing.rs/images/gallery/bmw-far-1.jpg" alt="BMW Far">
+      <img src="https://www.cardetailing.rs/images/gallery/range-far.jpg" alt="Range Far">
+      <img src="https://www.cardetailing.rs/images/gallery/range-enterijer.jpg" alt="Range Enterier">
+    </div>
+
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d647.29040430849!2d21.65076494310443!3d42.30374098829841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2srs!4v1745442656746!5m2!1sen!2srs" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
   </section>
-  
+
   <footer>
-    &copy; 2025 AIDI-Company - Te gjitha të drejtat e rezervuara
-    <h2>Na Kontakto</h2>
-    <style>
-        .form-container {
-          max-width: 500px;
-          margin: 50px auto;
-          background-color: #f7f7f7;
-          padding: 30px;
-          border-radius: 15px;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-          font-family: 'Segoe UI', sans-serif;
-        }
-      
-        .form-container h2 {
-          text-align: center;
-          margin-bottom: 25px;
-          color: #333;
-        }
-      
-        .form-group {
-          margin-bottom: 20px;
-        }
-      
-        .form-group label {
-          display: block;
-          margin-bottom: 8px;
-          font-weight: 500;
-          color: #444;
-        }
-      
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-          width: 100%;
-          padding: 12px;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          font-size: 16px;
-        }
-      
-        .form-group input[type="radio"],
-        .form-group input[type="checkbox"] {
-          width: auto;
-          margin-right: 5px;
-        }
-      
-        .form-group.inline {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-      
-        .form-container button {
-          width: 100%;
-          padding: 14px;
-          border: none;
-          background-color: #4CAF50;
-          color: white;
-          font-size: 17px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-      
-        .form-container button:hover {
-          background-color: #45a049;
-        }
-      </style>
-      
-      <div class="form-container">
-        <h2>Na Kontakto</h2>
-        <form action="https://getform.io/f/allykxga" method="POST">
-          <div class="form-group">
-            <label for="name">Emri juaj:</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-      
-          <div class="form-group">
-            <label for="email">Email-i juaj:</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-      
-          <div class="form-group">
-            <label for="message">Mesazhi:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-      
-          <!-- honeypot -->
-          <input type="hidden" name="_gotcha" style="display:none !important">
-      
-          
-            </select>
-          </div>
-      
-          <button type="submit">Dërgo Mesazhin</button>
-        </form>
-      </div>
+    &copy; 2025 AIDI-Company - Të gjitha të drejtat e rezervuara
+    <div class="form-container" id="contact-section">
+      <h2>Na Kontakto</h2>
+      <form action="https://getform.io/f/allykxga" method="POST">
+        <div class="form-group">
+          <label for="name">Emri juaj:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email-i juaj:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Numri telefonit:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Dërgo</button>
+      </form>
+    </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const servicesLink = document.querySelector('a[href="#services-list"]');
+      const servicesSection = document.getElementById('services-list');
+      const aboutLink = document.querySelector('a[href="#about-section"]');
+      const aboutSection = document.getElementById('about-section');
+      const contactLink = document.getElementById('contact-link');
+      const contactSection = document.getElementById('contact-section');
+      
+      // Funksionaliteti për butonin Services
+      servicesLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        servicesSection.classList.toggle('open');
+      });
+
+      // Funksionaliteti për butonin About
+      aboutLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        aboutSection.classList.toggle('open');
+      });
+
+      // Funksionaliteti për butonin Contact me scroll ngadalë
+      contactLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        slowScrollTo(contactSection, 400);
+      });
+    });
+    
+    function slowScrollTo(element, duration) {
+      let start = window.scrollY;
+      let end = element.offsetTop;
+      let distance = end - start;
+      let startTime = null;
+      
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        let timeElapsed = currentTime - startTime;
+        let progress = Math.min(timeElapsed / duration, 1);
+        
+        window.scrollTo(0, start + distance * progress);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+      
+      requestAnimationFrame(animation);
+    }
+  </script>
 
 </body>
 </html>
