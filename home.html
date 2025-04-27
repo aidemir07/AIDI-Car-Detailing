@@ -11,7 +11,7 @@
       font-family: Arial, sans-serif;
       background: url('https://t4.ftcdn.net/jpg/07/02/86/49/360_F_702864903_5BT4BZwjogEXjAhWeN4Z8GAGsh6lDXxd.jpg') no-repeat center center fixed;
       background-size: cover;
-      padding-top: 60px; /* Hapësirë për navbar-in fiks */
+      padding-top: 60px; 
     }
 
     header {
@@ -42,11 +42,11 @@
       align-items: center;
       gap: 20px;
       padding: 10px;
-      position: fixed; /* Navbar e fiksuar */
+      position: fixed; 
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000; /* Siguron që navbar është mbi çdo gjë tjetër */
+      z-index: 1000; 
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
@@ -306,9 +306,9 @@
         </div>
         <div class="form-group">
           <label for="message">Numri telefonit:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
+          <textarea id="message" name="message" rows="1" required></textarea>
         </div>
-        <button type="submit">Dërgo</button>
+        <button type="submit">Rezervoni tani!</button>
       </form>
     </div>
   </footer>
@@ -322,19 +322,19 @@
       const contactLink = document.getElementById('contact-link');
       const contactSection = document.getElementById('contact-section');
       
-      // Funksionaliteti për butonin Services
+      
       servicesLink.addEventListener('click', (e) => {
         e.preventDefault();
         servicesSection.classList.toggle('open');
       });
 
-      // Funksionaliteti për butonin About
+      
       aboutLink.addEventListener('click', (e) => {
         e.preventDefault();
         aboutSection.classList.toggle('open');
       });
 
-      // Funksionaliteti për butonin Contact me scroll ngadalë
+      
       contactLink.addEventListener('click', (e) => {
         e.preventDefault();
         slowScrollTo(contactSection, 400);
